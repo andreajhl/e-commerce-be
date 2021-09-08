@@ -16,7 +16,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "desarrollo": "nodemin ./server.js",
+    "start": "node ./server.js"
   },
   "keywords": [],
   "author": "",
