@@ -16,8 +16,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "desarrollo": "nodemin ./server.js",
-    "start": "node ./server.js"
+    "desarrollo": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
