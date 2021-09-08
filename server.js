@@ -16,6 +16,8 @@ app.use(express.json());
 
 app.use("/", routes);
 
-app.listen(process.env.PORT, () => {
+const port= process.env.PORT || 4000
+
+app.listen(port, () => {
   console.log("Servidor corriento en el puerto 4000");
 });
