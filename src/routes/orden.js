@@ -12,6 +12,7 @@ router.get('/', async (req,res)=>{
                             .populate('user',['nombre','apellido'])
                             .populate('productos.producto',['titulo','precio'])
     history= history.filter(e=>e.user.nombre);
+
     res.send(history);
 });
 

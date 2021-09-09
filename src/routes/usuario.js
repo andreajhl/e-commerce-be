@@ -120,6 +120,7 @@ router.get('/historyShopping',validarJWTUser, async(req,res)=>{
 
     var {historialDeCompras}= await Usuario.findById(id);
 
+
     historialDeCompras = historialDeCompras.map(async e=> await Orden.findById(e._id).populate('productos.producto',['titulo','precio']));
 
     historialDeCompras= await Promise.all(historialDeCompras);
