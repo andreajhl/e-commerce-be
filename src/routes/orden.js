@@ -8,9 +8,10 @@ const Orden = require ("../models/Orden")
 const {validarJWTAdmin} = require("../middleware/validarJWT");
 
 router.get('/', async (req,res)=>{
-    let history= await Usuario.find({},{"historialDeCompras":1,"nombre":1, "apellido":1});
-    history= history.filter(e=>e.historialDeCompras.length>0);
-                    
+    let history= await Orden.find({})
+                            .populate('user',['nombre','apellido'])
+                            .populate('productos.producto',['titulo','precio'])
+    history= history.filter(e=>e.user.nombre);
     res.send(history);
 });
 

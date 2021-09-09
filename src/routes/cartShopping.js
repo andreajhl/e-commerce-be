@@ -52,7 +52,7 @@ router.post('/',validarJWTUser, async (req,res)=>{
         const orden= new Orden(compra);
         orden.user=id
         await orden.save();
-        const user= await Usuario.findByIdAndUpdate(id, {$push:{"historialDeCompras": orden}})
+        const user= await Usuario.findByIdAndUpdate(id, {$push:{"historialDeCompras": compra}})
         const transporter = await nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
