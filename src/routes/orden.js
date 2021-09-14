@@ -5,13 +5,14 @@ const router = Router();
 const Usuario = require("../models/Usuario");
 const Orden = require ("../models/Orden")
 
-const {validarJWTAdmin} = require("../middleware/validarJWT");
+const {validarJWTAdmin, validarJWTUser} = require("../middleware/validarJWT");
 
-router.get('/', async (req,res)=>{
-    let history= await Orden.find({})
+router.get('/', validarJWTUser, async (req,res)=>{
+    const id=req.uid
+    let history= await Orden.find({},{ "user": {$elemMatch:{id}}})
                             .populate('user',['nombre','apellido'])
                             .populate('productos.producto',['titulo','precio'])
-    history= history.filter(e=>e.user.nombre);
+  
 
     res.send(history);
 });
