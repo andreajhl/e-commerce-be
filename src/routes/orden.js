@@ -17,6 +17,16 @@ router.get('/', validarJWTUser, async (req,res)=>{
     res.send(history);
 });
 
+router.get('/admin', validarJWTAdmin,async (req,res)=>{
+    
+    let history= await Orden.find({})
+                            .populate('user',['nombre','apellido'])
+                            .populate('productos.producto',['titulo','precio'])
+  
+    history= history.filter(e=>e.user)
+    res.send(history);
+});
+
 router.get('/:idOrden', async (req,res)=>{
 
     const {idOrden}=req.params
