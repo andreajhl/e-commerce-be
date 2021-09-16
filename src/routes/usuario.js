@@ -54,9 +54,9 @@ router.post( '/sendemail', async (req , res) => {
         });
         
         await transporter.sendMail({
-            from: '"Mario Emporio Henry" <marioemporiohenry@gmail.com>',
+            from: 'El Librero de Mario',
             to: user.email,
-            text: `Ingrese el siguiente código para recuperar su contraseña: ${randomCode}`
+            text: `Ingrese el siguiente código para recuperar tu contraseña: ${randomCode}`
         });
 
         return res.status(200).send({msg: 'Código de recuperación enviado con exito'});

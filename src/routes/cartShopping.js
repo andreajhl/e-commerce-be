@@ -64,7 +64,7 @@ router.post('/',validarJWTUser, async (req,res)=>{
         });
 
         var mailOptions={
-            from:"Remitente",
+            from:"El Librero de Mario",
             to: user.email,
             subject:"Informe de Compra",
             text: resCompra ? `¡Hola ${user.nombre} ${user.apellido} su compra N° ${orden._id} realizada el dia ${orden.fecha.toDateString()} se completo con exito;puede ver el resumen de su compra en nuestra web.
